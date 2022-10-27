@@ -1,13 +1,13 @@
-import ApplicationLogo from '@/components/ApplicationLogo'
-import AuthCard from '@/components/AuthCard'
-import AuthSessionStatus from '@/components/AuthSessionStatus'
-import Button from '@/components/Button'
-import GuestLayout from '@/components/Layouts/GuestLayout'
-import Input from '@/components/Input'
-import InputError from '@/components/InputError'
-import Label from '@/components/Label'
+import ApplicationLogo from '@/ui/ApplicationLogo'
+import AuthCard from '@/ui/AuthCard'
+import AuthSessionStatus from '@/ui/AuthSessionStatus'
+import Button from '@/ui/Button'
+import GuestLayout from '@/ui/Layouts/GuestLayout'
+import Input from '@/ui/Input'
+import InputError from '@/ui/InputError'
+import Label from '@/ui/Label'
 import Link from 'next/link'
-import { useAuth } from '@/hooks/auth'
+import { useAuth } from '@/../app/hooks/auth'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
@@ -43,9 +43,7 @@ const PasswordReset = () => {
             <AuthCard
                 logo={
                     <Link href="/">
-                        <a>
-                            <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
-                        </a>
+                        <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
                     </Link>
                 }>
                 {/* Session Status */}
@@ -81,7 +79,10 @@ const PasswordReset = () => {
                             required
                         />
 
-                        <InputError messages={errors.password} className="mt-2" />
+                        <InputError
+                            messages={errors.password}
+                            className="mt-2"
+                        />
                     </div>
 
                     {/* Confirm Password */}
@@ -101,7 +102,10 @@ const PasswordReset = () => {
                             required
                         />
 
-                        <InputError messages={errors.password_confirmation} className="mt-2" />
+                        <InputError
+                            messages={errors.password_confirmation}
+                            className="mt-2"
+                        />
                     </div>
 
                     <div className="flex items-center justify-end mt-4">

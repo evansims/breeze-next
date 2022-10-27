@@ -1,12 +1,12 @@
-import ApplicationLogo from '@/components/ApplicationLogo'
-import AuthCard from '@/components/AuthCard'
-import Button from '@/components/Button'
-import GuestLayout from '@/components/Layouts/GuestLayout'
-import Input from '@/components/Input'
-import InputError from '@/components/InputError'
-import Label from '@/components/Label'
+import ApplicationLogo from '@/ui/ApplicationLogo'
+import AuthCard from '@/ui/AuthCard'
+import Button from '@/ui/Button'
+import GuestLayout from '@/ui/Layouts/GuestLayout'
+import Input from '@/ui/Input'
+import InputError from '@/ui/InputError'
+import Label from '@/ui/Label'
 import Link from 'next/link'
-import { useAuth } from '@/hooks/auth'
+import { useAuth } from '@/../app/hooks/auth'
 import { useState } from 'react'
 
 const Register = () => {
@@ -24,7 +24,13 @@ const Register = () => {
     const submitForm = event => {
         event.preventDefault()
 
-        register({ name, email, password, password_confirmation: passwordConfirmation, setErrors })
+        register({
+            name,
+            email,
+            password,
+            password_confirmation: passwordConfirmation,
+            setErrors,
+        })
     }
 
     return (
@@ -32,12 +38,9 @@ const Register = () => {
             <AuthCard
                 logo={
                     <Link href="/">
-                        <a>
-                            <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
-                        </a>
+                        <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
                     </Link>
                 }>
-
                 <form onSubmit={submitForm}>
                     {/* Name */}
                     <div>
@@ -86,7 +89,10 @@ const Register = () => {
                             autoComplete="new-password"
                         />
 
-                        <InputError messages={errors.password} className="mt-2" />
+                        <InputError
+                            messages={errors.password}
+                            className="mt-2"
+                        />
                     </div>
 
                     {/* Confirm Password */}
@@ -106,14 +112,17 @@ const Register = () => {
                             required
                         />
 
-                        <InputError messages={errors.password_confirmation} className="mt-2" />
+                        <InputError
+                            messages={errors.password_confirmation}
+                            className="mt-2"
+                        />
                     </div>
 
                     <div className="flex items-center justify-end mt-4">
-                        <Link href="/login">
-                            <a className="underline text-sm text-gray-600 hover:text-gray-900">
-                                Already registered?
-                            </a>
+                        <Link
+                            href="/login"
+                            className="underline text-sm text-gray-600 hover:text-gray-900">
+                            Already registered?
                         </Link>
 
                         <Button className="ml-4">Register</Button>
